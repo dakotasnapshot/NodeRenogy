@@ -1,0 +1,33 @@
+#I use a lithium battery charger to help suppliment the long cloudy days when my solar shed doesnt get a charged 
+# and to keep the system from crashing and needing manual reset on the inverts I created this automation to turn on the AC/DC Battery charger.
+
+#Turn on the charger before the battery dies
+alias: Shed Battery Under 10% Charger On
+description: ""
+trigger:
+  - platform: numeric_state
+    entity_id: sensor.current_battery_capacity
+    below: 10
+condition: []
+action:
+  - type: turn_on
+    device_id: 9564bbcc4144dd01e12c6d2fa7852460
+    entity_id: switch.charger_mss110_main_channel
+    domain: switch
+mode: single
+
+#Turn off the charger at 50% so when the sun comes back out it will finish charging up the batteries. 
+alias: Shed Battery over 50% Charger off
+description: ""
+trigger:
+  - platform: numeric_state
+    entity_id: sensor.current_battery_capacity
+    above: 50
+condition: []
+action:
+  - type: turn_off
+    device_id: 9564bbcc4144dd01e12c6d2fa7852460
+    entity_id: switch.charger_mss110_main_channel
+    domain: switch
+mode: single
+
