@@ -1,5 +1,9 @@
 # NodeRenogy
 
+Forked from the author I put my own touches on this resource and built a dashboard to display the data. 
+
+<a img="Screenshot 2023-03-14 at 10.52.27 AM.png">Dashboard</a>
+
 Utility to retrieve data from Renogy solar controllers and publish it to MQTT, written in NodeJS.
 
 Data can then be surfaced in Home Assistant, or anything else that can read from a MQTT bus.
