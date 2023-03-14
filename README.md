@@ -2,7 +2,7 @@
 
 Forked from the author I put my own touches on this resource and built a dashboard to display the data. 
 
-<a img="Screenshot 2023-03-14 at 10.52.27 AM.png">Dashboard</a>
+<img src="Screenshot 2023-03-14 at 10.52.27 AM.png" alt="Dashboard">
 
 Utility to retrieve data from Renogy solar controllers and publish it to MQTT, written in NodeJS.
 
