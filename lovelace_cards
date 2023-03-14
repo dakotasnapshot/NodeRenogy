@@ -1,0 +1,192 @@
+#Most use https://github.com/kalkih/mini-graph-card
+
+#Engery Production Card
+type: custom:mini-graph-card
+entities:
+  - entity: sensor.today_solar_power
+name: Energy Production
+hours_to_show: 168
+aggregate_func: max
+group_by: date
+show:
+  graph: bar
+  extrema: true
+  average: true
+  fill: fade
+  icon: true
+  labels: false
+  name: true
+  state: true
+color_thresholds:
+  - value: 100
+    color: '#ff2626'
+  - value: 200
+    color: '#f8ff26'
+  - value: 400
+    color: '#4eff26'
+    
+#Solar Power Card
+type: custom:mini-graph-card
+entities:
+  - sensor.current_solar_power
+show:
+  labels: true
+color_thresholds:
+  - value: 20
+    color: '#f39c12'
+  - value: 50
+    color: '#dcf760'
+  - value: 70
+    color: '#63f760'
+hours_to_show: 12
+points_per_hour: 120
+line_width: 1
+
+#Voltage Delta Card
+type: custom:mini-graph-card
+entities:
+  - sensor.voltage_delta
+show:
+  labels: true
+color_thresholds:
+  - value: '-.01'
+    color: orange
+  - value: 0.01
+    color: green
+hours_to_show: 6
+points_per_hour: 120
+line_width: 1
+
+#Combo Cahrge Controller Card
+type: custom:mini-graph-card
+entities:
+  - entity: sensor.current_controller_temp
+    show_graph: false
+  - entity: sensor.current_solar_power
+    color: green
+    show_state: false
+    name: Watts
+  - entity: sensor.current_solar_volts
+    color: orange
+    show_state: false
+    name: Voltage
+  - entity: sensor.current_solar_current
+    color: purple
+    name: Amps In
+    show_state: false
+name: Solar Controller
+hours_to_show: 24
+points_per_hour: 240
+line_width: 1
+show:
+  name: true
+  legend: true
+  icon: false
+  labels: true
+
+#SOC Card
+type: gauge
+entity: sensor.current_battery_capacity
+needle: true
+severity:
+  green: 70
+  yellow: 20
+  red: 0
+
+#Battery Voltage Guage
+type: gauge
+entity: sensor.current_battery_voltage
+max: 14.5
+severity:
+  green: 12
+  yellow: 0
+  red: 14
+needle: true
+min: 11
+
+#Volts Combo Card with Battery Temp
+type: custom:mini-graph-card
+entities:
+  - entity: sensor.current_battery_tempc
+    show_graph: false
+  - entity: sensor.current_solar_volts
+    color: red
+    show_state: true
+    name: Solar Voltage
+  - entity: sensor.current_battery_voltage
+    color: yellow
+    name: Battery Voltage
+    show_state: true
+name: System Volts
+hours_to_show: 12
+points_per_hour: 160
+line_width: 1
+show:
+  name: true
+  legend: true
+  icon: false
+  labels: true
+
+#Battery Voltage Graph
+type: custom:mini-graph-card
+entities:
+  - sensor.current_battery_voltage
+show:
+  labels: true
+color_thresholds:
+  - value: 11
+    color: '#f39c12'
+  - value: 12
+    color: '#f7d160'
+  - value: 13
+    color: '#f2f760'
+  - value: 14
+    color: '#63f760'
+hours_to_show: 12
+points_per_hour: 120
+line_width: 1
+
+#Solar Panel Volts Guage
+type: gauge
+entity: sensor.current_solar_volts
+max: 14.5
+severity:
+  green: 12
+  yellow: 0
+  red: 14
+needle: true
+min: 11
+
+#Battery Inflow Charge in Amps Graph
+type: custom:mini-graph-card
+name: Battery Current
+entities:
+  - sensor.current_battery_current
+show:
+  labels: true
+color_thresholds:
+  - value: 1
+    color: '#f39c12'
+  - value: 5
+    color: '#dcf760'
+  - value: 10
+    color: '#63f760'
+hours_to_show: 12
+points_per_hour: 120
+line_width: 1
+
+#Solar $ Created
+type: tile
+entity: sensor.today_solar_dollars
+icon: mdi:currency-usd
+show_entity_picture: false
+
+#Supplimental Grid Charger
+type: history-graph
+entities:
+  - entity: switch.charger_mss110_main_channel
+    name: Charger
+hours_to_show: 24
+
+
+
