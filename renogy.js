@@ -30,14 +30,13 @@ const renogyBattValues = {
         this.battC = (rawData[2] * 0.01).toFixed(2);
 
         // Add the following lines to include additional properties in the payload
-        this.battT = rawData[3];
-        this.controlT = rawData[4];
-        this.loadV = (rawData[5] * 0.1).toFixed(2);
-        this.loadC = (rawData[6] * 0.01).toFixed(2);
-        this.loadP = rawData[7];
-        this.solarV = (rawData[8] * 0.1).toFixed(2);
-        this.solarC = (rawData[9] * 0.01).toFixed(2);
-        this.solarP = rawData[10];
+        this.controlT = rawData[3];
+        this.loadV = (rawData[4] * 0.1).toFixed(2);
+        this.loadC = (rawData[5] * 0.01).toFixed(2);
+        this.loadP = rawData[6];
+        this.solarV = (rawData[7] * 0.1).toFixed(2);
+        this.solarC = (rawData[8] * 0.01).toFixed(2);
+        this.solarP = rawData[9];
         this.battVMinToday = (rawData[11] * 0.1).toFixed(2);
         this.battVMaxToday = (rawData[12] * 0.1).toFixed(2);
         this.chgCMaxToday = (rawData[13] * 0.01).toFixed(2);
