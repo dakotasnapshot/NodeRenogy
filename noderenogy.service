@@ -4,10 +4,17 @@ Description=NodeRenogy Service
 [Service]
 ExecStart=node-renogy
 Restart=always
-User=nobody
-Group=nogroup
-WorkingDirectory=/home/pi/NodeRenogy
+RestartSec=10   # Optional: Set the time to wait before restarting (in seconds)
 Environment=PATH=/usr/bin:/usr/local/bin
+Environment=NODE_ENV=production
+Environment=NODERENOGY_SERIALPORT=/dev/ttyUSB0
+Environment=NODERENOGY_MQTTBROKER=homeassistant.local
+Environment=NODERENOGY_MQTTUSER=user
+Environment=NODERENOGY_MQTTPASS=password
+WorkingDirectory=/home/dakotac/NodeRenogy
+
+# Additional Environment Variable for Relay Control
+Environment=NODERENOGY_BATTCAP_TOPIC=home/battery/capacity
 
 [Install]
 WantedBy=multi-user.target
