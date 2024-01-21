@@ -50,6 +50,13 @@ const renogyBattValues = {
         this.uptime = rawData[21];
         this.totalBattOvercharge = rawData[22];
         this.totalBattFullCharges = rawData[23];
+        this.chargingState = rawData[26] === 0 ? 'deactivated' :
+                     rawData[26] === 1 ? 'activated' :
+                     rawData[26] === 2 ? 'mppt' :
+                     rawData[26] === 3 ? 'equalizing' :
+                     rawData[26] === 4 ? 'boost' :
+                     rawData[26] === 5 ? 'floating' :
+                     rawData[26] === 6 ? 'current limiting' : 'unknown';
 
         this.checkBatteryLevel();
     },
